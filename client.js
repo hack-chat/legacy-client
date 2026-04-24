@@ -1037,8 +1037,10 @@ function userIgnore(nick) {
 /* color scheme switcher */
 
 var schemes = [
+  'amoled',
   'android',
   'android-white',
+  'andromeda',
   'atelier-dune',
   'atelier-forest',
   'atelier-heath',
@@ -1047,34 +1049,38 @@ var schemes = [
   'banana',
   'bright',
   'bubblegum',
+  'carrot',
+  'catppuccin',
   'chalk',
   'default',
   'eighties',
+  'flamingo',
   'fresh-green',
+  'fried-egg',
   'greenscreen',
+  'gruvbox-light',
   'hacker',
+  'lax',
   'maniac',
   'mariana',
   'military',
+  'milkyway',
   'mocha',
   'monokai',
+  'nebula',
   'nese',
   'ocean',
   'omega',
   'pop',
   'railscasts',
-  'solarized',
-  'tomorrow',
-  'tk-night',
-  'carrot',
-  'lax',
-  'Ubuntu',
-  'gruvbox-light',
-  'fried-egg',
   'rainbow',
-  'amoled',
   'retro',
-  'Waifu',
+  'solarized',
+  'sunlight',
+  'tk-night',
+  'tomorrow',
+  'ubuntu',
+  'waifu',
   'flamingo'
 ];
 
@@ -1102,7 +1108,7 @@ function setScheme(scheme) {
 
 function setHighlight(scheme) {
   currentHighlight = scheme;
-  $('#highlight-link').href = "vendor/hljs/styles/" + scheme + ".min.css";
+  $('#highlight-link').href = "vendor/hljs/styles/" + scheme + ".css";
   localStorageSet('highlight', scheme);
 }
 
