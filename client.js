@@ -57,6 +57,9 @@ var imgHostWhitelist = [
   'i.postimg.cc',
   'i.ytimg.com',
   'i.ibb.co',
+  'files.catbox.moe',
+  'litter.catbox.moe',
+  'gateway.irys.xyz',
 ];
 
 function getDomain(link) {
