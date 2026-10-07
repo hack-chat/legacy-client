@@ -343,8 +343,8 @@ function notify(args) {
 }
 
 function join(channel) {
-  if (document.domain == 'hack.chat') {
-    // For https://hack.chat/
+  if (document.domain == 'legacy.hack.chat') {
+    // For https://legacy.hack.chat/
     ws = new WebSocket('wss://hack.chat/chat-ws');
   } else {
     // for local installs
@@ -411,13 +411,18 @@ var COMMANDS = {
 
     var elem = pushMessage(args);
 
-    if (typeof (args.customId) === 'string') {
-      addActiveMessage(args.customId, args.userid, args.text, elem);
+    var msgId = args.customId || args.id;
+    if (msgId != null) {
+      addActiveMessage(String(msgId), args.userid, args.text, elem);
     }
   },
 
   updateMessage: function (args) {
-    var customId = args.customId;
+    var customId = args.customId || args.id;
+    if (customId != null) {
+      customId = String(customId);
+    }
+    
     var mode = args.mode;
 
     if (!mode) {
@@ -459,6 +464,11 @@ var COMMANDS = {
 
     // Scroll to bottom if necessary
     var atBottom = isAtBottom();
+
+    // Catch empty \u0000 payloads used by the server to clear a message
+    if (newText === '\u0000') {
+      newText = '';
+    }
 
     textElem.innerHTML = md.render(newText);
 
